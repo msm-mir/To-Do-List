@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     addlist.cpp \
     addtask.cpp \
+    list.cpp \
     login.cpp \
     main.cpp \
     mainpanel.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     addlist.h \
     addtask.h \
+    list.h \
     login.h \
     mainpanel.h \
     signup.h \
