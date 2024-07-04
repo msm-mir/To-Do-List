@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainPanel</class>
+ <widget class="QMainWindow" name="MainPanel">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1050</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1050</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1050</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Main Panel</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+background-image: url(:/images/background/main_panel_background.png);
+}
+QGroupBox {
+border: 2px solid #aa55ff;
+border-radius: 15px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBoxProfile">
+    <property name="geometry">
+     <rect>
+      <x>89</x>
+      <y>79</y>
+      <width>252</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 15pt &quot;Merriweather&quot;;
+</string>
+    </property>
+    <property name="title">
+     <string>Profile</string>
+    </property>
+    <widget class="QLabel" name="labelName">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>34</y>
+       <width>151</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 8pt &quot;Merriweather&quot;;
+color: rgb(0, 0, 0);
+background: transparent;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string>maryam mirdamadiyan</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelUsername">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>58</y>
+       <width>58</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 8pt &quot;Merriweather&quot;;
+color: rgb(0, 0, 0);
+background: transparent;
+border: none;</string>
+     </property>
+     <property name="text">
+      <string>msm.mir</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="labelUserProfile">
+     <property name="geometry">
+      <rect>
+       <x>33</x>
+       <y>33</y>
+       <width>45</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/images/icon/user_profile_icon.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxMenu">
+    <property name="geometry">
+     <rect>
+      <x>89</x>
+      <y>192</y>
+      <width>252</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 15pt &quot;Merriweather&quot;;
+</string>
+    </property>
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <widget class="QPushButton" name="pushButtonAssignedOther">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>328</y>
+       <width>210</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 12pt &quot;Merriweather&quot;;
+	color: rgb(0, 0, 0);
+	background: transparent;
+	text-align: left;
+	padding-left: 15px;
+}
+QPushButton:hover {
+	background-color: rgb(220, 205, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}
+QPushButton:pressed,
+QPushButton:checked {
+	background-color: rgb(210, 190, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}</string>
+     </property>
+     <property name="text">
+      <string>   Assigned To Other</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/images/icon/group_users_icon.png</normaloff>:/images/icon/group_users_icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonAssignedMe">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>278</y>
+       <width>210</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 12pt &quot;Merriweather&quot;;
+	color: rgb(0, 0, 0);
+	background: transparent;
+	text-align: left;
+	padding-left: 15px;
+}
+QPushButton:hover {
+	background-color: rgb(220, 205, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}
+QPushButton:pressed,
+QPushButton:checked {
+	background-color: rgb(210, 190, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}</string>
+     </property>
+     <property name="text">
+      <string>   Assigned To Me</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/images/icon/user_icon.png</normaloff>:/images/icon/user_icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>15</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonToday">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>28</y>
+       <width>210</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 12pt &quot;Merriweather&quot;;
+	color: rgb(0, 0, 0);
+	background: transparent;
+	text-align: left;
+	padding-left: 15px;
+}
+QPushButton:hover {
+	background-color: rgb(220, 205, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}
+QPushButton:pressed,
+QPushButton:checked {
+	background-color: rgb(210, 190, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}</string>
+     </property>
+     <property name="text">
+      <string>   Today</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/images/icon/today_icon.png</normaloff>:/images/icon/today_icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>15</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonStarTasks">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>178</y>
+       <width>210</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 12pt &quot;Merriweather&quot;;
+	color: rgb(0, 0, 0);
+	background: transparent;
+	text-align: left;
+	padding-left: 15px;
+}
+QPushButton:hover {
+	background-color: rgb(220, 205, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}
+QPushButton:pressed,
+QPushButton:checked {
+	background-color: rgb(210, 190, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}</string>
+     </property>
+     <property name="text">
+      <string>   Star Tasks</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/images/icon/filled_star_icon.png</normaloff>:/images/icon/filled_star_icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>15</width>
+       <height>15</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonLists">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>78</y>
+       <width>210</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 12pt &quot;Merriweather&quot;;
+	color: rgb(0, 0, 0);
+	background: transparent;
+	text-align: left;
+	padding-left: 15px;
+}
+QPushButton:hover {
+	background-color: rgb(220, 205, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}
+QPushButton:pressed,
+QPushButton:checked {
+	background-color: rgb(210, 190, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}</string>
+     </property>
+     <property name="text">
+      <string>   Lists</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/images/icon/list_icon.png</normaloff>:/images/icon/list_icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonTasks">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>128</y>
+       <width>210</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 12pt &quot;Merriweather&quot;;
+	color: rgb(0, 0, 0);
+	background: transparent;
+	text-align: left;
+	padding-left: 15px;
+}
+QPushButton:hover {
+	background-color: rgb(220, 205, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}
+QPushButton:pressed,
+QPushButton:checked {
+	background-color: rgb(210, 190, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}</string>
+     </property>
+     <property name="text">
+      <string>   Tasks</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/images/icon/task_icon.png</normaloff>:/images/icon/task_icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonCompleted">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>228</y>
+       <width>210</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 12pt &quot;Merriweather&quot;;
+	color: rgb(0, 0, 0);
+	background: transparent;
+	text-align: left;
+	padding-left: 15px;
+}
+QPushButton:hover {
+	background-color: rgb(220, 205, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}
+QPushButton:pressed,
+QPushButton:checked {
+	background-color: rgb(210, 190, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}</string>
+     </property>
+     <property name="text">
+      <string>   Completed</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/images/icon/complete_icon.png</normaloff>:/images/icon/complete_icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonLogout">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>378</y>
+       <width>210</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 12pt &quot;Merriweather&quot;;
+	color: rgb(0, 0, 0);
+	background: transparent;
+	text-align: left;
+	padding-left: 15px;
+}
+QPushButton:hover {
+	background-color: rgb(220, 205, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}
+QPushButton:pressed {
+	background-color: rgb(210, 190, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}</string>
+     </property>
+     <property name="text">
+      <string>   Logout</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/images/icon/logout_icon.png</normaloff>:/images/icon/logout_icon.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>17</width>
+       <height>17</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBoxLists">
+    <property name="geometry">
+     <rect>
+      <x>352</x>
+      <y>80</y>
+      <width>612</width>
+      <height>543</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 15pt &quot;Merriweather&quot;;
+</string>
+    </property>
+    <property name="title">
+     <string>Main Panel</string>
+    </property>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="geometry">
+      <rect>
+       <x>3</x>
+       <y>28</y>
+       <width>607</width>
+       <height>503</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="pageToday">
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>200</y>
+         <width>40</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>today</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="pageLists">
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>430</y>
+         <width>63</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>lists</string>
+       </property>
+      </widget>
+      <widget class="QScrollArea" name="scrollArea">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>131</width>
+         <height>391</height>
+        </rect>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>129</width>
+          <height>389</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QFrame" name="frame">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>340</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QPushButton" name="pushButtonAddList">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>430</y>
+         <width>210</width>
+         <height>40</height>
+        </rect>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	font: 12pt &quot;Merriweather&quot;;
+	color: rgb(0, 0, 0);
+	background: transparent;
+	text-align: left;
+	padding-left: 15px;
+}
+QPushButton:hover {
+	background-color: rgb(220, 205, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}
+QPushButton:pressed {
+	background-color: rgb(210, 190, 255);
+	border-radius: 10px;
+	font: 13pt &quot;Merriweather&quot;;
+}</string>
+       </property>
+       <property name="text">
+        <string>   New List</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/images/icon/plus_icon.png</normaloff>:/images/icon/plus_icon.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="pageTasks">
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>200</y>
+         <width>63</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>tasks</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="pageStarTasks">
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>190</y>
+         <width>63</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>star tasks</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="pageAssignMe">
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>270</x>
+         <y>190</y>
+         <width>81</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>assign me</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="pageAssignOther">
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>200</y>
+         <width>101</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>assign other</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="pageCompleted">
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>200</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>completed</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
