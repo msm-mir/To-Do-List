@@ -30,3 +30,13 @@ void User::setPassword(QString password) {
 QString User::getPassword() {
     return this->password;
 }
+
+void User::setLists(int listId, List list) {
+    this->lists.insert(std::make_pair(listId, list));
+}
+List User::getLists(int listId) {
+    for (const auto &itr: this->lists)
+        if (itr.first == listId)
+            return itr.second;
+    return List();
+}

@@ -112,18 +112,19 @@ QLineEdit:hover {
     <widget class="QLabel" name="labelError">
      <property name="geometry">
       <rect>
-       <x>60</x>
-       <y>360</y>
-       <width>180</width>
-       <height>30</height>
+       <x>0</x>
+       <y>370</y>
+       <width>250</width>
+       <height>20</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">font: 8pt &quot;Merriweather&quot;;
-color: rgb(255, 0, 0);</string>
+color: rgb(255, 0, 0);
+qproperty-alignment: 'AlignHCenter';</string>
      </property>
      <property name="text">
-      <string>error error error error error</string>
+      <string>error</string>
      </property>
     </widget>
     <widget class="QLabel" name="labelBackground">

@@ -1,8 +1,10 @@
 #include "signup.h"
 #include "ui_signup.h"
 
-Signup::Signup(QWidget *parent) : QMainWindow(parent) , ui(new Ui::Signup) {
+Signup::Signup(std::map<QString,User> users, QWidget *parent) : QMainWindow(parent) , ui(new Ui::Signup) {
     ui->setupUi(this);
+
+    this->users = users;
 
     connections();
 
@@ -39,14 +41,13 @@ void Signup::hideError() {
 
 void Signup::onPushButtonSignupClicked() {
     if (checkSignup()) {
-
-
+        addUser();
         onPushButtonLoginClicked();
     }
 }
 
 void Signup::onPushButtonLoginClicked() {
-    Login *newPage = new Login;
+    Login *newPage = new Login(users);
     newPage->show();
     this->close();
 }
@@ -185,7 +186,57 @@ bool Signup::checkString(QString text) {
     return false;
 }
 
-bool Signup::checkDuplicateUsername(QString text) {
-    text = "";
+bool Signup::checkDuplicateUsername(QString username) {
+    for (std::pair<QString,User> itr : users)
+        if (itr.first == username)
+            return true;
     return false;
+}
+
+void Signup::addUser() {
+    QString firstName = ui->lineEditFirstName->text();
+    QString lastName = ui->lineEditLastName->text();
+    QString username = ui->lineEditUsername->text();
+    QString password = ui->lineEditPassword->text();
+
+    User user;
+    user.setFirstName(firstName);
+    user.setLastName(lastName);
+    user.setUsername(username);
+    user.setPassword(password);
+
+    users.insert(std::make_pair(username,user));
+
+    addUserToDatabase(user);
+}
+
+void Signup::addUserToDatabase(User user) {
+    QSqlDatabase mydb;
+
+    if (!openDatabase(mydb))
+        return;
+
+    QSqlQuery qry;
+    qry.prepare("INSERT INTO users (First Name, Last Name, Username, Password) VALUES (:firstName, :lastName, :username, :password)");
+    qry.bindValue(":firstName", user.getFirstName());
+    qry.bindValue(":lastName", user.getLastName());
+    qry.bindValue(":username", user.getUsername());
+    qry.bindValue(":password", user.getPassword());
+
+    closeDatabase(mydb);
+}
+
+bool Signup::openDatabase(QSqlDatabase &mydb) {
+    mydb = QSqlDatabase::addDatabase("QSQLITE");
+    mydb.setDatabaseName("ToDoList.db");
+
+    if (!mydb.open())
+        return false;
+    else
+        return true;
+}
+
+void Signup::closeDatabase(QSqlDatabase &mydb) {
+    mydb.close();
+    QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
 }

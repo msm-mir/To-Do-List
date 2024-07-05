@@ -149,18 +149,19 @@ QLineEdit:hover {
     <widget class="QLabel" name="labelError">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>240</y>
-       <width>310</width>
-       <height>30</height>
+       <x>0</x>
+       <y>250</y>
+       <width>350</width>
+       <height>20</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">font: 8pt &quot;Merriweather&quot;;
-color: rgb(255, 0, 0);</string>
+color: rgb(255, 0, 0);
+qproperty-alignment: 'AlignHCenter';</string>
      </property>
      <property name="text">
-      <string>Username field must be more than 4 characters</string>
+      <string>error</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButtonShow">
@@ -174,6 +175,9 @@ color: rgb(255, 0, 0);</string>
      </property>
      <property name="cursor">
       <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">background: transparent;
@@ -202,6 +206,9 @@ border: none;</string>
      </property>
      <property name="cursor">
       <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton:hover {
@@ -333,6 +340,9 @@ QLineEdit:hover {
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::NoFocus</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {

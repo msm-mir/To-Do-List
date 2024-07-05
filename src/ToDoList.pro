@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,20 +11,24 @@ CONFIG += c++17
 SOURCES += \
     addlist.cpp \
     addtask.cpp \
+    linklist.cpp \
     list.cpp \
     login.cpp \
     main.cpp \
     mainpanel.cpp \
     signup.cpp \
+    task.cpp \
     user.cpp
 
 HEADERS += \
     addlist.h \
     addtask.h \
+    linklist.h \
     list.h \
     login.h \
     mainpanel.h \
     signup.h \
+    task.h \
     user.h
 
 FORMS += \

@@ -1,8 +1,10 @@
 #include "login.h"
 #include "ui_login.h"
 
-Login::Login(QWidget *parent) : QMainWindow(parent) , ui(new Ui::Login) {
+Login::Login(std::map<QString,User> users, QWidget *parent) : QMainWindow(parent) , ui(new Ui::Login) {
     ui->setupUi(this);
+
+    this->users = users;
 
     connections();
 
@@ -37,20 +39,18 @@ void Login::hideError() {
 
 void Login::onPushButtonLoginClicked() {
     if (checkLogin()) {
-
-
         openMainPanelPage();
     }
 }
 
 void Login::openMainPanelPage() {
-    MainPanel *newPage = new MainPanel;
+    MainPanel *newPage = new MainPanel(users);
     newPage->show();
     this->close();
 }
 
 void Login::onPushButtonSignupClicked() {
-    Signup *newPage = new Signup;
+    Signup *newPage = new Signup(users);
     newPage->show();
     this->close();
 }
@@ -116,7 +116,7 @@ bool Login::checkPasswordField() {
         ui->labelError->show();
         return true;
     }
-    if (checkMatchPasswordAndUsername(ui->lineEditPassword->text())) {
+    if (checkMatchPasswordAndUsername(ui->lineEditUsername->text(), ui->lineEditPassword->text())) {
         ui->labelError->setText("Password is incorrect");
         ui->labelError->show();
         return true;
@@ -151,11 +151,16 @@ bool Login::checkString(QString text) {
 }
 
 bool Login::findUsername(QString text) {
-    text = "";
-    return false;
+    if (users.find(text) != users.end())
+        return false;
+    return true;
 }
 
-bool Login::checkMatchPasswordAndUsername(QString text) {
-    text = "";
-    return false;
+bool Login::checkMatchPasswordAndUsername(QString username, QString password) {
+    for (std::pair<QString,User> itr : users) {
+        if (itr.first == username)
+            if (itr.second.getPassword() == password)
+                return false;
+    }
+    return true;
 }

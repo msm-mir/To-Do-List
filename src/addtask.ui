@@ -99,18 +99,19 @@ QLineEdit:hover {
     <widget class="QLabel" name="labelError">
      <property name="geometry">
       <rect>
-       <x>60</x>
-       <y>390</y>
-       <width>180</width>
-       <height>30</height>
+       <x>0</x>
+       <y>400</y>
+       <width>250</width>
+       <height>20</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true">font: 8pt &quot;Merriweather&quot;;
-color: rgb(255, 0, 0);</string>
+color: rgb(255, 0, 0);
+qproperty-alignment: 'AlignHCenter';</string>
      </property>
      <property name="text">
-      <string>error error error error error</string>
+      <string>error</string>
      </property>
     </widget>
     <widget class="QLabel" name="labelTime">
@@ -149,46 +150,11 @@ image-position: left;</string>
       <string>       Details :</string>
      </property>
     </widget>
-    <widget class="QTimeEdit" name="timeEdit">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>74</y>
-       <width>100</width>
-       <height>30</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QDateTimeEdit {
-font: 9pt&quot;Merriweather&quot;;
-border-radius: 7px;
-background-color: rgb(215, 200, 255);
-border: 1px solid #000000;
-}
-QDateTimeEdit:hover {
-	background-color: rgb(206, 192, 247);
-}
-QDateTimeEdit:up-button {
-	border-radius: 2px;
-	subcontrol-position: top right;
-	height: 12px;
-	width: 20px;
-	image: url(:/images/icon/arrow_up_icon.png);
-}
-QDateTimeEdit:down-button {
-	border-radius: 2px;
-	subcontrol-position: bottom right;
-	height: 12px;
-	width: 20px;
-	image: url(:/images/icon/arrow_down_icon.png);
-}</string>
-     </property>
-    </widget>
     <widget class="QCalendarWidget" name="calendarWidget">
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>110</y>
+       <y>103</y>
        <width>210</width>
        <height>130</height>
       </rect>

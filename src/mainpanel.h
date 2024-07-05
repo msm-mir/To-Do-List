@@ -3,15 +3,20 @@
 
 #include <QMainWindow>
 #include <QVBoxLayout>
+#include <QPushButton>
 #include "login.h"
+#include "user.h"
 
 namespace Ui { class MainPanel; }
 
 class MainPanel : public QMainWindow { Q_OBJECT
 
 public:
-    explicit MainPanel(QWidget *parent = nullptr);
+    explicit MainPanel(std::map<QString,User> users, QString username, QWidget *parent = nullptr);
     ~MainPanel();
+
+    std::map<QString,User> users;
+    QString username;
 
     void connections();
 
@@ -24,11 +29,18 @@ private slots:
     void onPushButtonAssignedMeClicked();
     void onPushButtonAssignedOtherClicked();
     void onPushButtonLogoutClicked();
-    void onAddWidget();
-    void onRemoveWidget();
+
+    void onListClicked();
+
+    void addListsWidget();
+    void addListTasksWidget();
+
+    void removeWidgets();
 
 private:
     Ui::MainPanel *ui;
+
+    QHash<QPushButton*, QHBoxLayout*> mButtonToLayoutMap;
 };
 
 #endif // MAINPANEL_H

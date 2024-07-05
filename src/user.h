@@ -2,6 +2,8 @@
 #define USER_H
 
 #include <QString>
+#include <map>
+#include "list.h"
 
 class User {
 private:
@@ -9,6 +11,7 @@ private:
     QString lastName;
     QString username;
     QString password;
+    std::map<int,List> lists;
 
 public:
     User();
@@ -25,6 +28,9 @@ public:
 
     void setPassword(QString);
     QString getPassword();
+
+    void setLists(int, List);
+    List getLists(int);
 };
 
 #endif // USER_H
