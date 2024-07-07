@@ -40,3 +40,7 @@ List User::getLists(int listId) {
             return itr.second;
     return List();
 }
+
+int User::getListsSize() {
+    return this->lists.size();
+}

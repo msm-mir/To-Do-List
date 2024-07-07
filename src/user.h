@@ -31,6 +31,8 @@ public:
 
     void setLists(int, List);
     List getLists(int);
+
+    int getListsSize();
 };
 
 #endif // USER_H

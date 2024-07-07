@@ -45,3 +45,10 @@ Task List::getTasks(int taskId) {
 
     return Task();
 }
+int List::getTasksSize() {
+    return this->tasks.getSize();
+}
+
+void List::operator << (Task task) {
+    this->addTasks(task);
+}

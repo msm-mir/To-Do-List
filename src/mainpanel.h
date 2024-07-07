@@ -4,8 +4,11 @@
 #include <QMainWindow>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QFrame>
 #include "login.h"
 #include "user.h"
+#include "addlist.h"
+#include "addtask.h"
 
 namespace Ui { class MainPanel; }
 
@@ -19,6 +22,11 @@ public:
     QString username;
 
     void connections();
+    void setProfile();
+    void addListsWidget(QString, int);
+    void addListTasksWidget(QString);
+    void addStarTasksWidget(QString);
+    void removeWidgets(QFrame*);
 
 private slots:
     void onPushButtonTodayClicked();
@@ -30,17 +38,15 @@ private slots:
     void onPushButtonAssignedOtherClicked();
     void onPushButtonLogoutClicked();
 
-    void onListClicked();
-
-    void addListsWidget();
-    void addListTasksWidget();
-
-    void removeWidgets();
+    void onListClicked(int);
+    void openAddListPage();
+    void openAddTaskPage(int);
 
 private:
     Ui::MainPanel *ui;
-
-    QHash<QPushButton*, QHBoxLayout*> mButtonToLayoutMap;
+    QVBoxLayout *listLayout;
+    QVBoxLayout *listTasksLayout;
+    QVBoxLayout *starTasksLayout;
 };
 
 #endif // MAINPANEL_H

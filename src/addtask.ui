@@ -114,7 +114,7 @@ qproperty-alignment: 'AlignHCenter';</string>
       <string>error</string>
      </property>
     </widget>
-    <widget class="QLabel" name="labelTime">
+    <widget class="QLabel" name="labelDate">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -264,7 +264,7 @@ image-position: left;</string>
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="labelUsername">
+    <widget class="QLabel" name="labelAssign">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -282,7 +282,7 @@ image-position: left;</string>
       <string>         Assign :</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditUsername">
+    <widget class="QLineEdit" name="lineEditAssign">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -334,7 +334,7 @@ QTextEdit:hover {
     <widget class="QPushButton" name="pushButtonAdd">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>130</x>
        <y>355</y>
        <width>100</width>
        <height>30</height>
@@ -400,6 +400,43 @@ border: none;</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButtonCancel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>355</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:hover {
+  background-color: rgb(165, 125, 235);
+}
+QPushButton {
+	font: 10pt&quot;Merriweather&quot;;
+	border-radius: 7px;
+	background-color: rgb(180, 135, 255);
+	border: 1px solid #000000;
+	color: rgb(0, 0, 0);
+}
+QPushButton:pressed {
+	background-color: rgb(135, 100, 195);
+}</string>
+     </property>
+     <property name="text">
+      <string>Cancel</string>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>35</width>
+       <height>20</height>
+      </size>
      </property>
     </widget>
    </widget>

@@ -39,5 +39,8 @@
         <file>images/icon/assign_icon.png</file>
         <file>images/icon/date_icon.png</file>
         <file>images/icon/detail_icon.png</file>
+        <file>images/background/small_background_green.png</file>
+        <file>images/background/small_background_pink.png</file>
+        <file>images/background/small_background_purple.png</file>
     </qresource>
 </RCC>

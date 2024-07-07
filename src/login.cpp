@@ -44,7 +44,7 @@ void Login::onPushButtonLoginClicked() {
 }
 
 void Login::openMainPanelPage() {
-    MainPanel *newPage = new MainPanel(users);
+    MainPanel *newPage = new MainPanel(users, ui->lineEditUsername->text());
     newPage->show();
     this->close();
 }
@@ -139,7 +139,7 @@ bool Login::checkLettersNum(QString text) {
 
 bool Login::checkString(QString text) {
     for (int i = 0; i < text.size(); i++) {
-        if (((text[i] < '!') || (text[i] > 'z')) || ((text[i] < 'a') && (text[i] > 'Z'))) {
+        if (((text[i] < 'A') || (text[i] > 'z')) || ((text[i] < 'a') && (text[i] > 'Z'))) {
             if ((text[i] == '.') || (text[i] == '_') || (text[i] == '-') || (text[i] == '!') || (text[i] == '@')
                 || ((text[i] >= '0') && (text[i] <='9')))
                 continue;
@@ -157,7 +157,7 @@ bool Login::findUsername(QString text) {
 }
 
 bool Login::checkMatchPasswordAndUsername(QString username, QString password) {
-    for (std::pair<QString,User> itr : users) {
+    for (auto &itr : users) {
         if (itr.first == username)
             if (itr.second.getPassword() == password)
                 return false;

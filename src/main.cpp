@@ -33,18 +33,6 @@ int main(int argc, char *argv[]) {
     Signup a(users);
     a.show();
 
-    // Login b;
-    // b.show();
-
-    // MainPanel c;
-    // c.show();
-
-    // AddList d;
-    // d.show();
-
-    // AddTask e;
-    // e.show();
-
     return z.exec();
 }
 
@@ -78,7 +66,7 @@ void setTask(std::map<int,Task> &tasks) {
         int listId = query.value(0).toInt();
         int taskId = query.value(1).toInt();
         QString name = query.value(2).toString();
-        QString date = query.value(3).toString();
+        QDate date = QDate::fromString(query.value(3).toString(), Qt::ISODate);
         QString details = query.value(4).toString();
         QString assign = query.value(5).toString();
         bool star = query.value(6).toInt();
@@ -88,7 +76,7 @@ void setTask(std::map<int,Task> &tasks) {
         task.setId(taskId);
         task.setListId(listId);
         task.setName(name);
-        task.setDate(QDate::fromString(date));
+        task.setDate(date);
         task.setDetail(details);
         task.setAssign(assign);
         task.setStar(star);
@@ -113,7 +101,7 @@ void setList(std::map<int,List> &lists, std::map<int,Task> &tasks) {
         list.setName(name);
         list.setColor(color);
 
-        for (std::pair<int,Task> itr : tasks) {
+        for (auto &itr : tasks) {
             if (itr.second.getListId() == listId)
                 list.addTasks(itr.second);
         }
@@ -137,7 +125,7 @@ void setUser(std::map<QString,User> &users, std::map<int,List> &lists) {
         user.setUsername(username);
         user.setPassword(password);
 
-        for (std::pair<int,List> itr : lists) {
+        for (auto &itr : lists) {
             if (itr.second.getUserId() == username)
                 user.setLists(itr.first, itr.second);
         }

@@ -7,11 +7,25 @@ MainPanel::MainPanel(std::map<QString,User> users, QString username, QWidget *pa
     this->users = users;
     this->username = username;
 
+    setProfile();
+
     connections();
+
+    removeWidgets(ui->listFrame);
+    removeWidgets(ui->listTasksFrame);
+    removeWidgets(ui->starTasksFrame);
 }
 
 MainPanel::~MainPanel() {
     delete ui;
+}
+
+void MainPanel::setProfile() {
+    for (auto &itr : users)
+        if (itr.first == username) {
+            ui->labelName->setText(itr.second.getFirstName()+" "+itr.second.getLastName());
+            ui->labelUsername->setText(username);
+        }
 }
 
 void MainPanel::connections() {
@@ -25,36 +39,60 @@ void MainPanel::connections() {
     connect(ui->pushButtonAssignedOther, SIGNAL(clicked()), this, SLOT(onPushButtonAssignedOtherClicked()));
     connect(ui->pushButtonLogout, SIGNAL(clicked()), this, SLOT(onPushButtonLogoutClicked()));
 
-    connect(ui->pushButtonAddList, SIGNAL(clicked()), this, SLOT(addListsWidget()));
-    connect(ui->pushButtonAddTask, SIGNAL(clicked()), this, SLOT(addListTasksWidget()));
+    connect(ui->pushButtonAddList, SIGNAL(clicked()), this, SLOT(openAddListPage()));
 }
 
 void MainPanel::onPushButtonTodayClicked() {
     ui->stackedWidget->setCurrentIndex(0);
+    ui->groupBoxPanel->setTitle("Today");
 }
 
 void MainPanel::onPushButtonListsClicked() {
     ui->stackedWidget->setCurrentIndex(1);
+    ui->groupBoxPanel->setTitle("Lists");
+
+    removeWidgets(ui->listFrame);
+
+    for (auto &itr : users)
+        if (itr.first == username)
+            for (int i = 1; i <= itr.second.getListsSize(); i++)
+                addListsWidget(itr.second.getLists(i).getName(), i);
 }
 
 void MainPanel::onPushButtonTasksClicked() {
     ui->stackedWidget->setCurrentIndex(2);
+    ui->groupBoxPanel->setTitle("Tasks");
 }
 
 void MainPanel::onPushButtonStarTasksClicked() {
     ui->stackedWidget->setCurrentIndex(3);
+    ui->groupBoxPanel->setTitle("Star Tasks");
+
+    removeWidgets(ui->starTasksFrame);
+
+    for (auto &itr : users)
+        if (itr.first == username)
+            for (int i = 1; i <= itr.second.getListsSize(); i++)
+                for (int j = 1; j <= itr.second.getLists(i).getTasksSize(); j++)
+                    if (itr.second.getLists(i).getTasks(j).getStar())
+                        addStarTasksWidget(itr.second.getLists(i).getTasks(j).getName());
 }
 
 void MainPanel::onPushButtonCompletedClicked() {
     ui->stackedWidget->setCurrentIndex(4);
+    ui->groupBoxPanel->setTitle("Completed Tasks");
 }
 
 void MainPanel::onPushButtonAssignedMeClicked() {
     ui->stackedWidget->setCurrentIndex(5);
+    ui->groupBoxPanel->setTitle("Assigned To Me");
+
+
 }
 
 void MainPanel::onPushButtonAssignedOtherClicked() {
     ui->stackedWidget->setCurrentIndex(6);
+    ui->groupBoxPanel->setTitle("Assigned To Other");
 }
 
 void MainPanel::onPushButtonLogoutClicked() {
@@ -63,75 +101,124 @@ void MainPanel::onPushButtonLogoutClicked() {
     this->close();
 }
 
-void MainPanel::onListClicked() {
+void MainPanel::onListClicked(int listId) {
     ui->stackedWidget->setCurrentIndex(7);
+    ui->groupBoxPanel->setTitle("List Tasks");
+
+    removeWidgets(ui->listTasksFrame);
+
+    for (auto &itr : users)
+        if (itr.first == username)
+            for (int i = 1; i <= itr.second.getLists(listId).getTasksSize(); i++)
+                addListTasksWidget(itr.second.getLists(i).getTasks(listId).getName());
+
+    connect(ui->pushButtonAddTask, SIGNAL(clicked()), this, SLOT(openAddTaskPage(listId)));
 }
 
-void MainPanel::addListsWidget() {
-    QVBoxLayout *layout = qobject_cast<QVBoxLayout*>(ui->frame->layout());
+void MainPanel::openAddListPage() {
+    AddList *newPage = new AddList(users, username);
+    newPage->show();
+    this->close();
+}
 
-    QHBoxLayout *newLayout = new QHBoxLayout(ui->frame);
+void MainPanel::openAddTaskPage(int listId) {
+    AddTask *newPage = new AddTask(users, username, listId);
+    newPage->show();
+    this->close();
+}
 
-    QString buttonText = tr("List");
+void MainPanel::addListsWidget(QString qButton, int listId) {
+    static int cnt = 0;
+
+    if (cnt == 0)
+        listLayout = qobject_cast<QVBoxLayout*>(ui->listFrame->layout());
+    cnt++;
+
+    QHBoxLayout *newListLayout = new QHBoxLayout(ui->listFrame);
+
+    QString buttonText = tr(qButton.toUtf8().constData());
     QString buttonTextEdit = tr("Edit");
     QString buttonTextDelete = tr("Delete");
 
-    QPushButton *listButton = new QPushButton(buttonText, ui->frame);
-    newLayout->addWidget(listButton);
+    QPushButton *listButton = new QPushButton(buttonText, ui->listFrame);
+    newListLayout->addWidget(listButton);
     listButton->setFixedSize(350, 40);
 
-    QPushButton *editButton = new QPushButton(buttonTextEdit, ui->frame);
-    newLayout->addWidget(editButton);
+    QPushButton *editButton = new QPushButton(buttonTextEdit, ui->listFrame);
+    newListLayout->addWidget(editButton);
     editButton->setFixedSize(65, 40);
 
-    QPushButton *deleteButton = new QPushButton(buttonTextDelete, ui->frame);
-    newLayout->addWidget(deleteButton);
+    QPushButton *deleteButton = new QPushButton(buttonTextDelete, ui->listFrame);
+    newListLayout->addWidget(deleteButton);
     deleteButton->setFixedSize(80, 40);
 
-    layout->insertLayout(0, newLayout);
-    mButtonToLayoutMap.insert(deleteButton, newLayout);
+    listLayout->insertLayout(0, newListLayout);
 
-    connect(listButton, SIGNAL(clicked()), this, SLOT(onListClicked()));
-    connect(deleteButton, SIGNAL(clicked()), this, SLOT(removeWidgets()));
+    connect(listButton, SIGNAL(clicked()), this, SLOT(onListClicked(listId)));
 }
 
-void MainPanel::addListTasksWidget() {
-    QVBoxLayout *layout = qobject_cast<QVBoxLayout*>(ui->frame_2->layout());
+void MainPanel::addListTasksWidget(QString qButton) {
+    static int cnt = 0;
 
-    QHBoxLayout *newLayout = new QHBoxLayout(ui->frame_2);
+    if (cnt == 0)
+        listTasksLayout = qobject_cast<QVBoxLayout*>(ui->listTasksFrame->layout());
+    cnt++;
 
-    QString buttonText = tr("Task");
+    QHBoxLayout *newListTasksLayout = new QHBoxLayout(ui->listTasksFrame);
+
+    QString buttonText = tr(qButton.toUtf8().constData());
     QString buttonTextEdit = tr("Edit");
     QString buttonTextDelete = tr("Delete");
 
-    QPushButton *TaskButton = new QPushButton(buttonText, ui->frame_2);
-    newLayout->addWidget(TaskButton);
-    TaskButton->setFixedSize(350, 40);
+    QPushButton *listTasksButton = new QPushButton(buttonText, ui->listTasksFrame);
+    newListTasksLayout->addWidget(listTasksButton);
+    listTasksButton->setFixedSize(350, 40);
 
-    QPushButton *editButton = new QPushButton(buttonTextEdit, ui->frame_2);
-    newLayout->addWidget(editButton);
+    QPushButton *editButton = new QPushButton(buttonTextEdit, ui->listTasksFrame);
+    newListTasksLayout->addWidget(editButton);
     editButton->setFixedSize(65, 40);
 
-    QPushButton *deleteButton = new QPushButton(buttonTextDelete, ui->frame_2);
-    newLayout->addWidget(deleteButton);
+    QPushButton *deleteButton = new QPushButton(buttonTextDelete, ui->listTasksFrame);
+    newListTasksLayout->addWidget(deleteButton);
     deleteButton->setFixedSize(80, 40);
 
-    layout->insertLayout(0, newLayout);
-
-    mButtonToLayoutMap.insert(deleteButton, newLayout);
-
-    connect(deleteButton, SIGNAL(clicked()), this, SLOT(removeWidgets()));
+    listTasksLayout->insertLayout(0, newListTasksLayout);
 }
 
-void MainPanel::removeWidgets() {
-    QPushButton *button = qobject_cast<QPushButton*>(sender());
-    QHBoxLayout *layout = mButtonToLayoutMap.take(button);
+void MainPanel::addStarTasksWidget(QString qButton) {
+    static int cnt = 0;
 
-    while (layout->count() != 0) {
-        QLayoutItem *item = layout->takeAt(0);
+    if (cnt == 0)
+        starTasksLayout = qobject_cast<QVBoxLayout*>(ui->starTasksFrame->layout());
+    cnt++;
+
+    QHBoxLayout *newStarTasksLayout = new QHBoxLayout(ui->starTasksFrame);
+
+    QString buttonText = tr(qButton.toUtf8().constData());
+    QString buttonTextEdit = tr("Edit");
+    QString buttonTextDelete = tr("Delete");
+
+    QPushButton *starTasksButton = new QPushButton(buttonText, ui->starTasksFrame);
+    newStarTasksLayout->addWidget(starTasksButton);
+    starTasksButton->setFixedSize(350, 40);
+
+    QPushButton *editButton = new QPushButton(buttonTextEdit, ui->starTasksFrame);
+    newStarTasksLayout->addWidget(editButton);
+    editButton->setFixedSize(65, 40);
+
+    QPushButton *deleteButton = new QPushButton(buttonTextDelete, ui->starTasksFrame);
+    newStarTasksLayout->addWidget(deleteButton);
+    deleteButton->setFixedSize(80, 40);
+
+    starTasksLayout->insertLayout(0, newStarTasksLayout);
+}
+
+void MainPanel::removeWidgets(QFrame *frame) {
+    QVBoxLayout *fLayout = qobject_cast<QVBoxLayout*>(frame->layout());
+
+    while (fLayout->count() != 1) {
+        QLayoutItem *item = fLayout->takeAt(0);
         delete item->widget();
         delete item;
     }
-
-    delete layout ;
 }

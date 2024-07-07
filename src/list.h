@@ -6,7 +6,7 @@
 #include "linklist.h"
 
 enum Color {
-    blue, green, ping, purple
+    blue, green, pink, purple
 };
 
 class List {
@@ -35,6 +35,9 @@ public:
 
     void addTasks(Task);
     Task getTasks(int);
+    int getTasksSize();
+
+    void operator << (Task);
 };
 
 #endif // LIST_H

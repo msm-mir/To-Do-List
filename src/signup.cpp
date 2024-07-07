@@ -175,7 +175,7 @@ bool Signup::checkLettersNum(QString text) {
 
 bool Signup::checkString(QString text) {
     for (int i = 0; i < text.size(); i++) {
-        if (((text[i] < '!') || (text[i] > 'z')) || ((text[i] < 'a') && (text[i] > 'Z'))) {
+        if (((text[i] < 'A') || (text[i] > 'z')) || ((text[i] < 'a') && (text[i] > 'Z'))) {
             if ((text[i] == '.') || (text[i] == '_') || (text[i] == '-') || (text[i] == '!') || (text[i] == '@')
                 || ((text[i] >= '0') && (text[i] <='9')))
                 continue;
@@ -187,7 +187,7 @@ bool Signup::checkString(QString text) {
 }
 
 bool Signup::checkDuplicateUsername(QString username) {
-    for (std::pair<QString,User> itr : users)
+    for (auto &itr : users)
         if (itr.first == username)
             return true;
     return false;
@@ -216,24 +216,21 @@ void Signup::addUserToDatabase(User user) {
     if (!openDatabase(mydb))
         return;
 
-    QSqlQuery qry;
-    qry.prepare("INSERT INTO users (First Name, Last Name, Username, Password) VALUES (:firstName, :lastName, :username, :password)");
-    qry.bindValue(":firstName", user.getFirstName());
-    qry.bindValue(":lastName", user.getLastName());
-    qry.bindValue(":username", user.getUsername());
-    qry.bindValue(":password", user.getPassword());
+    QSqlQuery query("INSERT INTO users (FirstName, LastName, Username, Password) VALUES"
+                    " ('"+user.getFirstName()+"', '"+user.getLastName()+"', '"+user.getUsername()+"', '"+user.getPassword()+"')");
+    query.exec();
 
     closeDatabase(mydb);
 }
 
 bool Signup::openDatabase(QSqlDatabase &mydb) {
     mydb = QSqlDatabase::addDatabase("QSQLITE");
-    mydb.setDatabaseName("ToDoList.db");
+    mydb.setDatabaseName("D:/Code/4022/To Do List/uiap-final-project-msm-mir/src/ToDoList.db");
 
-    if (!mydb.open())
-        return false;
-    else
+    if (mydb.open())
         return true;
+    else
+        return false;
 }
 
 void Signup::closeDatabase(QSqlDatabase &mydb) {

@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QMessageBox>
+#include <QSqlError>
 #include <map>
 #include "login.h"
 #include "user.h"
