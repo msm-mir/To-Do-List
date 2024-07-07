@@ -5,6 +5,10 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <QFrame>
+#include <QtWidgets>
+#ifndef QT_NO_PRINTER
+#include <QPrinter>
+#endif
 #include "login.h"
 #include "user.h"
 #include "addlist.h"
@@ -23,10 +27,11 @@ public:
 
     void connections();
     void setProfile();
-    void addListsWidget(QString, int);
-    void addListTasksWidget(QString);
-    void addStarTasksWidget(QString);
-    void removeWidgets(QFrame*);
+    void checkReminder();
+    void setListTheme(int);
+    void addListWidget(List);
+    void addTaskWidget(Task, QFrame*);
+    void removeWidgets(QHash<QPushButton*,QHBoxLayout*>&);
 
 private slots:
     void onPushButtonTodayClicked();
@@ -38,15 +43,25 @@ private slots:
     void onPushButtonAssignedOtherClicked();
     void onPushButtonLogoutClicked();
 
-    void onListClicked(int);
+    void getPdf();
+    void onListClicked();
     void openAddListPage();
     void openAddTaskPage(int);
 
 private:
     Ui::MainPanel *ui;
-    QVBoxLayout *listLayout;
-    QVBoxLayout *listTasksLayout;
-    QVBoxLayout *starTasksLayout;
+
+    QHash<QPushButton*,QHBoxLayout*> todayLayoutMap;
+    QHash<QPushButton*,QHBoxLayout*> listLayoutMap;
+    QHash<QPushButton*,QHBoxLayout*> listTasksLayoutMap;
+    QHash<QPushButton*,QHBoxLayout*> tasksLayoutMap;
+    QHash<QPushButton*,QHBoxLayout*> starTasksLayoutMap;
+    QHash<QPushButton*,QHBoxLayout*> completeTasksLayoutMap;
+    QHash<QPushButton*,QHBoxLayout*> assignMeLayoutMap;
+    QHash<QPushButton*,QHBoxLayout*> assignOtherLayoutMap;
+
+    QHash<QPushButton*,List> listTasksButtonMap;
+    QHash<QPushButton*,List> pdfButtonMap;
 };
 
 #endif // MAINPANEL_H

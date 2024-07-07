@@ -149,11 +149,11 @@ void AddList::addList() {
     Color color;
     if (ui->pushButtonBlue->isChecked())
         color = blue;
-    if (ui->pushButtonGreen->isChecked())
+    else if (ui->pushButtonGreen->isChecked())
         color = green;
-    if (ui->pushButtonPink->isChecked())
+    else if (ui->pushButtonPink->isChecked())
         color = pink;
-    if (ui->pushButtonPurple->isChecked())
+    else if (ui->pushButtonPurple->isChecked())
         color = purple;
 
     List list;
@@ -162,8 +162,10 @@ void AddList::addList() {
     list.setUserId(username);
 
     for (auto &itr : users)
-        if (itr.first == username)
+        if (itr.first == username) {
+            list.setId(itr.second.getListsSize() + 1);
             itr.second.setLists(itr.second.getListsSize() + 1, list);
+        }
 
     addListToDatabase(list);
 }
@@ -174,13 +176,12 @@ void AddList::addListToDatabase(List list) {
     if (!openDatabase(mydb))
         return;
 
-    QString color = QString::number(static_cast<int>(list.getColor()));
-
     QSqlQuery query;
-    query.prepare("INSERT INTO lists (UserId, Name, Color) VALUES (:username, :name, :color)");
+    query.prepare("INSERT INTO lists (UserId, ListId, Name, Color) VALUES (:username, :listId, :name, :color)");
     query.bindValue(":username", username);
+    query.bindValue(":listId", list.getId());
     query.bindValue(":name", list.getName());
-    query.bindValue(":color", color);
+    query.bindValue(":color", QString::number(static_cast<int>(list.getColor())));
     query.exec();
 
     closeDatabase(mydb);

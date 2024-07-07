@@ -178,8 +178,11 @@ void AddTask::addTask() {
     task.setComplete(false);
 
     for (auto &itr : users)
-        if (itr.first == username)
-            itr.second.getLists(listId).addTasks(task);
+        if (itr.first == username) {
+            // itr.second.getLists(listId).addTasks(task);
+            task.setId(itr.second.getLists(listId).getTasksSize() + 1);
+            itr.second.getLists(listId) << task;
+        }
 
     addTaskToDatabase(task);
 }
@@ -191,9 +194,10 @@ void AddTask::addTaskToDatabase(Task task) {
         return;
 
     QSqlQuery query;
-    query.prepare("INSERT INTO tasks (ListId, Name, Date, Details, Assign, Star, Complete) VALUES "
-                  "(:listId, :name, :date, :details, :assign, :star, :complete)");
+    query.prepare("INSERT INTO tasks (ListId, TaskId, Name, Date, Details, Assign, Star, Complete) VALUES "
+                  "(:listId, :taskId, :name, :date, :details, :assign, :star, :complete)");
     query.bindValue(":listId", task.getListId());
+    query.bindValue(":taskId", task.getId());
     query.bindValue(":name", task.getName());
     query.bindValue(":date", task.getDate().toString(Qt::ISODate));
     query.bindValue(":details", task.getDetail());

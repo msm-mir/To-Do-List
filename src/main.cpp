@@ -101,10 +101,9 @@ void setList(std::map<int,List> &lists, std::map<int,Task> &tasks) {
         list.setName(name);
         list.setColor(color);
 
-        for (auto &itr : tasks) {
+        for (auto &itr : tasks)
             if (itr.second.getListId() == listId)
-                list.addTasks(itr.second);
-        }
+                list << itr.second;
 
         lists.insert(std::make_pair(listId,list));
     }

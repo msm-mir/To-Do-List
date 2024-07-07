@@ -9,7 +9,7 @@
         <file>images/background/background_vertical_pink.png</file>
         <file>images/background/background_vertical_purple.png</file>
         <file>images/background/backverticalback.png</file>
-        <file>images/background/main_panel_background.png</file>
+        <file>images/background/main_panel_purple_background.png</file>
         <file>images/background/small_background_blue.png</file>
         <file>images/icon/blue_color.png</file>
         <file>images/icon/complete_icon.png</file>
@@ -42,5 +42,10 @@
         <file>images/background/small_background_green.png</file>
         <file>images/background/small_background_pink.png</file>
         <file>images/background/small_background_purple.png</file>
+        <file>images/background/main_panel_blue_background.png</file>
+        <file>images/background/main_panel_green_background.png</file>
+        <file>images/background/main_panel_pink_background.png</file>
+        <file>images/icon/off_icon.png</file>
+        <file>images/icon/on_icon.png</file>
     </qresource>
 </RCC>
