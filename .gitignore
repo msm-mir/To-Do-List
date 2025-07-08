@@ -1,2 +1,4 @@
-build/
 UIAP-ToDo-List.pdf
+src/build/
+src/images.qrc
+src/ToDoList.pro.user
