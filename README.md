@@ -70,16 +70,8 @@ This application uses **SQLite** database to store **all user data and task info
 ## 🚀 How to Run
 
 - **Qt Creator IDE** (used to develop the entire project)
-- **Qt libraries and dependencies**
+- **Qt libraries and dependencies** (to build and run correctly)
 - Make sure the compiler is set to support C++17 or later
-
----
-
-## 📌 Notes
-
-- The entire project was developed using **Qt Creator**
-- The system requires Qt libraries to build and run correctly
-- Each List's tasks are stored using **linked lists**
 
 ---
 
