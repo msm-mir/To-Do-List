@@ -1,4 +1,4 @@
-# ✅📃 To-Do List Application (C++ with Qt GUI)
+# ✅ To-Do List Application (C++ with Qt GUI)
 
 This project is a simple **To-Do List application** implemented in **C++** using **Qt GUI framework**, as part of an Advanced Programming course. It aims to demonstrate practical usage of object-oriented programming (OOP).
 
@@ -75,6 +75,6 @@ This application uses **SQLite** database to store **all user data and task info
 
 ---
 
-## 👨‍💻 Author
+## 👩🏻‍💻 Author
 
-- Developed as part of a C++ Advanced Programming course final project
+Developed as part of a C++ Advanced Programming course final project
