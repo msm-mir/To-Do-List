@@ -49,7 +49,7 @@ This application uses **SQLite** database to store **all user data and task info
 ## 📁 Project Structure
 
 ```
-/BankProject
+/ToDoListProject
 ├── main.cpp
 ├── ToDoList.db
 ├── ToDoList.pro
