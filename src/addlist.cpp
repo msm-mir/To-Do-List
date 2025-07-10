@@ -140,7 +140,7 @@ void AddList::setPurpleBackgroundIcon(bool checked) {
 }
 
 void AddList::openMainPanelPage() {
-    MainPanel *newPage = new MainPanel(users, username);
+    MainPanel *newPage = new MainPanel("", users, username);
     newPage->show();
     this->close();
 }

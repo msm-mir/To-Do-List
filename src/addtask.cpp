@@ -154,7 +154,7 @@ bool AddTask::findUsername(QString username) {
 }
 
 void AddTask::openMainPanelPage() {
-    MainPanel *newPage = new MainPanel(users, username);
+    MainPanel *newPage = new MainPanel("", users, username);
     newPage->show();
     this->close();
 }

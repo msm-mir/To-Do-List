@@ -16,7 +16,7 @@ namespace Ui { class MainPanel; }
 class MainPanel : public QMainWindow { Q_OBJECT
 
 public:
-    explicit MainPanel(std::map<QString,User> users, QString username, QWidget *parent = nullptr);
+    explicit MainPanel(QString callerClass, std::map<QString,User> users, QString username, QWidget *parent = nullptr);
     ~MainPanel();
 
     std::map<QString,User> users;

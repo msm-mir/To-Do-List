@@ -46,7 +46,7 @@ void Login::onPushButtonLoginClicked() {
 }
 
 void Login::openMainPanelPage() {
-    MainPanel *newPage = new MainPanel(users, ui->lineEditUsername->text());
+    MainPanel *newPage = new MainPanel("Login", users, ui->lineEditUsername->text());
     newPage->show();
     this->close();
 }

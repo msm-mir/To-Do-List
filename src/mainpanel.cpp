@@ -4,7 +4,7 @@
 #include "addlist.h"
 #include "addtask.h"
 
-MainPanel::MainPanel(std::map<QString,User> users, QString username, QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainPanel) {
+MainPanel::MainPanel(QString callerClass, std::map<QString,User> users, QString username, QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainPanel) {
     ui->setupUi(this);
 
     this->users = users;
@@ -14,7 +14,7 @@ MainPanel::MainPanel(std::map<QString,User> users, QString username, QWidget *pa
 
     connections();
 
-    checkReminder();
+    if (callerClass == "Login") checkReminder();
 
     removeWidgets(listLayoutMap);
     removeWidgets(listTasksLayoutMap);
@@ -61,7 +61,7 @@ void MainPanel::checkReminder() {
             }
         }
     }
-    QMessageBox::information(nullptr, "Reminder", reminder);
+    if (reminder.size() != 0) QMessageBox::information(nullptr, "Reminder", reminder);
 }
 
 void MainPanel::onPushButtonTodayClicked() {
