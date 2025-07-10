@@ -1,5 +1,7 @@
 #include "addlist.h"
 #include "ui_addlist.h"
+#include "mainpanel.h"
+#include <QSqlQuery>
 
 AddList::AddList(std::map<QString,User> users, QString username, QWidget *parent) : QMainWindow(parent) , ui(new Ui::AddList) {
     ui->setupUi(this);
@@ -146,7 +148,7 @@ void AddList::openMainPanelPage() {
 void AddList::addList() {
     QString listName = ui->lineEditListName->text();
 
-    Color color;
+    Color color = none;
     if (ui->pushButtonBlue->isChecked())
         color = blue;
     else if (ui->pushButtonGreen->isChecked())

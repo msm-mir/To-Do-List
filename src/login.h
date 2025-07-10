@@ -2,8 +2,6 @@
 #define LOGIN_H
 
 #include <QMainWindow>
-#include "signup.h"
-#include "mainpanel.h"
 #include "user.h"
 
 namespace Ui { class Login; }

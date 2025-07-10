@@ -1,8 +1,4 @@
 #include "signup.h"
-#include "login.h"
-#include "mainpanel.h"
-#include "addlist.h"
-#include "addtask.h"
 #include "user.h"
 
 #include <QApplication>

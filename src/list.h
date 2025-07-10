@@ -6,7 +6,7 @@
 #include "linklist.h"
 
 enum Color {
-    blue, green, pink, purple
+    none, blue, green, pink, purple
 };
 
 class List {

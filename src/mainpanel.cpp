@@ -1,5 +1,8 @@
 #include "mainpanel.h"
 #include "ui_mainpanel.h"
+#include "login.h"
+#include "addlist.h"
+#include "addtask.h"
 
 MainPanel::MainPanel(std::map<QString,User> users, QString username, QWidget *parent) : QMainWindow(parent) , ui(new Ui::MainPanel) {
     ui->setupUi(this);

@@ -1,5 +1,7 @@
 #include "addtask.h"
 #include "ui_addtask.h"
+#include "mainpanel.h"
+#include <QSqlQuery>
 
 AddTask::AddTask(std::map<QString,User> users, QString username, int listId, QWidget *parent) : QMainWindow(parent) , ui(new Ui::AddTask) {
     ui->setupUi(this);

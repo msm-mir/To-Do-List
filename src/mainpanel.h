@@ -9,10 +9,7 @@
 #ifndef QT_NO_PRINTER
 #include <QPrinter>
 #endif
-#include "login.h"
 #include "user.h"
-#include "addlist.h"
-#include "addtask.h"
 
 namespace Ui { class MainPanel; }
 

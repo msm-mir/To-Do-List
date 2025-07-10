@@ -2,8 +2,8 @@
 #define ADDTASK_H
 
 #include <QMainWindow>
+#include <QSqlDatabase>
 #include "user.h"
-#include "mainpanel.h"
 
 namespace Ui { class AddTask; }
 

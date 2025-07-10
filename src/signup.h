@@ -7,7 +7,6 @@
 #include <QMessageBox>
 #include <QSqlError>
 #include <map>
-#include "login.h"
 #include "user.h"
 
 QT_BEGIN_NAMESPACE
