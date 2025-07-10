@@ -272,21 +272,17 @@ void MainPanel::addListWidget(List list) {
 
     QHBoxLayout *newLayout = new QHBoxLayout(ui->listFrame);
 
-    QString buttonText = tr(list.getName().toUtf8().constData());
-    QString buttonTextPdf = tr("PDF");
-    QString buttonTextDelete = tr("Delete");
-
-    QPushButton *button = new QPushButton(buttonText, ui->listFrame);
+    QPushButton *button = new QPushButton(list.getName().toUtf8().constData(), ui->listFrame);
     newLayout->addWidget(button);
     button->setFixedSize(350, 40);
     button->setCursor(Qt::PointingHandCursor);
 
-    QPushButton *pdfButton = new QPushButton(buttonTextPdf, ui->listFrame);
+    QPushButton *pdfButton = new QPushButton("PDF", ui->listFrame);
     newLayout->addWidget(pdfButton);
     pdfButton->setFixedSize(65, 40);
     pdfButton->setCursor(Qt::PointingHandCursor);
 
-    QPushButton *deleteButton = new QPushButton(buttonTextDelete, ui->listFrame);
+    QPushButton *deleteButton = new QPushButton("Delete", ui->listFrame);
     newLayout->addWidget(deleteButton);
     deleteButton->setFixedSize(80, 40);
     deleteButton->setCursor(Qt::PointingHandCursor);
