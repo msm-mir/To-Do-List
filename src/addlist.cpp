@@ -191,7 +191,7 @@ void AddList::addListToDatabase(List list) {
 
 bool AddList::openDatabase(QSqlDatabase &mydb) {
     mydb = QSqlDatabase::addDatabase("QSQLITE");
-    mydb.setDatabaseName("D:/Code/4022/To Do List/uiap-final-project-msm-mir/src/ToDoList.db");
+    mydb.setDatabaseName("D:/Code/4022/To Do List/To-Do-List/src/ToDoList.db");
 
     if (!mydb.open())
         return false;
