@@ -279,14 +279,17 @@ void MainPanel::addListWidget(List list) {
     QPushButton *button = new QPushButton(buttonText, ui->listFrame);
     newLayout->addWidget(button);
     button->setFixedSize(350, 40);
+    button->setCursor(Qt::PointingHandCursor);
 
     QPushButton *pdfButton = new QPushButton(buttonTextPdf, ui->listFrame);
     newLayout->addWidget(pdfButton);
     pdfButton->setFixedSize(65, 40);
+    pdfButton->setCursor(Qt::PointingHandCursor);
 
     QPushButton *deleteButton = new QPushButton(buttonTextDelete, ui->listFrame);
     newLayout->addWidget(deleteButton);
     deleteButton->setFixedSize(80, 40);
+    deleteButton->setCursor(Qt::PointingHandCursor);
 
     layout->insertLayout(0, newLayout);
 
@@ -320,17 +323,15 @@ void MainPanel::addTaskWidget(Task task, QFrame *frame) {
     QPushButton *button = new QPushButton(buttonText, frame);
     newLayout->addWidget(button);
     button->setGeometry(15, 15, 300, 40);
-    // button->setFixedHeight(40);
 
     QPushButton *dateButton = new QPushButton(buttonTextDate, frame);
     newLayout->addWidget(dateButton);
     dateButton->setGeometry(320, 15, 70, 40);
-    // dateButton->setFixedHeight(40);
 
     QPushButton *starButton = new QPushButton(buttonTextStar, frame);
     newLayout->addWidget(starButton);
     starButton->setGeometry(395, 15, 25, 25);
-    // starButton->setFixedHeight(25);
+    starButton->setCursor(Qt::PointingHandCursor);
     starButton->setStyleSheet("background: transparent;"
                               "border: none;");
     QIcon iconStar;
@@ -341,7 +342,7 @@ void MainPanel::addTaskWidget(Task task, QFrame *frame) {
     QPushButton *completeButton = new QPushButton(buttonTextComplete, frame);
     newLayout->addWidget(completeButton);
     completeButton->setGeometry(425, 15, 25, 25);
-    // completeButton->setFixedHeight(25);
+    completeButton->setCursor(Qt::PointingHandCursor);
     completeButton->setStyleSheet("background: transparent;"
                               "border: none;");
     QIcon iconComplete;
