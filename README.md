@@ -4,6 +4,10 @@ This project is a simple **To-Do List application** implemented in **C++** using
 
 ---
 
+![Presentation1](https://github.com/user-attachments/assets/7f412b7f-7d86-4e9a-9569-49045e30b6c9)
+
+---
+
 ## 💡 Features
 
 ### 👤 User Accounts
