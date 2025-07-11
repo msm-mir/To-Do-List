@@ -4,7 +4,7 @@ This project is a simple **To-Do List application** implemented in **C++** using
 
 ---
 
-![Presentation1](https://github.com/user-attachments/assets/7f412b7f-7d86-4e9a-9569-49045e30b6c9)
+![InShot_20250712_022149210](https://github.com/user-attachments/assets/4beff944-060d-4e1a-99c2-b3bef3e59eaa)
 
 ---
 
