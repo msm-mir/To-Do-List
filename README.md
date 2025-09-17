@@ -1,4 +1,4 @@
-# ✅ To-Do List Application (C++ with Qt GUI)
+# To-Do List Application (C++ with Qt GUI)
 
 This project is a simple **To-Do List application** implemented in **C++** using **Qt GUI framework**, as part of an Advanced Programming course. It aims to demonstrate practical usage of object-oriented programming (OOP).
 
@@ -8,16 +8,16 @@ This project is a simple **To-Do List application** implemented in **C++** using
 
 ---
 
-## 💡 Features
+## Features
 
-### 👤 User Accounts
+### User Accounts
 - Sign up and log in with a unique username and password
 - User-specific task assignments
 
-### 📃 Multiple To-Do Lists
+### Multiple To-Do Lists
 - Create multiple lists with unique names and colors
 
-### ✅ Task Management
+### Task Management
 - Add tasks to any list
 - Set a task title
 - Add a description to each task
@@ -26,22 +26,22 @@ This project is a simple **To-Do List application** implemented in **C++** using
 - Mark tasks as completed or not completed
 - Assign tasks to a specific user
 
-### 👁️‍🗨️ Special Views
+### Special Views
 - View all starred tasks
 - View tasks assigned to a specific user
 
-### 📤 Export
+### Export
 - Export a list of tasks as a **PDF file**
 
 ---
 
-## 💾 Data Storage
+## Data Storage
 
 This application uses **SQLite** database to store **all user data and task information** persistently.
 
 ---
 
-## 🛠 Technical Details
+## Technical Details
 
 - Implemented in **C++**
 - Uses **Qt framework** for GUI
@@ -50,7 +50,7 @@ This application uses **SQLite** database to store **all user data and task info
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 /ToDoListProject
@@ -71,7 +71,7 @@ This application uses **SQLite** database to store **all user data and task info
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 - **Qt Creator IDE** (used to develop the entire project)
 - **Qt libraries and dependencies** (to build and run correctly)
